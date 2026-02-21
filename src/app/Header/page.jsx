@@ -19,7 +19,7 @@ const Header = () => {
         { name: 'Our Team', href: '/about/team' },
       ],
     },
-    { name: 'Services', href: '/services' },
+    { name: 'Services', href: '/Service' },
     { name: 'Prices', href: '/prices' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Blog', href: '/blog' },
@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <header className="bg-[#f3f3f3] w-full sticky top-0 z-50 shadow-sm font-sans">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-25 flex items-center justify-between">
         {/* Logo Section */}
         <Link href="/" className="flex items-center gap-1 group">
           <Zap

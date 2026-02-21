@@ -17,28 +17,22 @@ const AboutUs = () => {
   return (
     <>
       <Header />
-      <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden ">
-        {/* Background Image (Full Color) */}
+      <section className="relative h-[300px] md:h-[400px] overflow-hidden flex items-center">
         <div
-          className="absolute inset-0 z-0 bg-cover bg-center"
+          className="absolute inset-0 z-0 bg-cover bg-center brightness-[0.7]"
           style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=1600')`,
           }}
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent z-10" />
 
-        {/* Right Side White Gradient */}
-        <div className="absolute inset-0 z-10 " />
-
-        {/* Content Area */}
-        <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-20 flex items-center">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-20 w-full">
           <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight">
-            About
+            About <span className="text-orange-500">Us</span>
           </h1>
         </div>
-
-        {/* Bottom Border */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-100" />
-      </div>
+        <div className="absolute bottom-0 left-0 w-full h-1.5 bg-orange-500 z-20" />
+      </section>
 
       <div className="w-full bg-white font-sans">
         {/* --- SECTION 1: HERO/INTRO --- */}
