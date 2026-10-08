@@ -5,9 +5,9 @@
 export const site = {
   name: 'Electrician',
   tagline: 'Professional Electrical Services',
-  phone: '1 (800) 765-43-21',
-  phoneHref: 'tel:+18007654321',
-  whatsapp: '18007654321', // country code + number, bina + ya space ke
+  phone: '+91 93195 80618',
+  phoneHref: 'tel:+91 93195 80618',
+  whatsapp: '+91 93195 80618', // country code + number, bina + ya space ke
   email: 'info@electrician.com',
   address: '123 Electric St, Power City, State 45678',
   hours: 'Mon - Sat: 08:00 AM - 06:00 PM',

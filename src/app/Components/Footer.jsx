@@ -13,6 +13,7 @@ import {
   Zap,
   ArrowRight,
 } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => {
   const social = [
@@ -42,13 +43,19 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Column 1: Logo & About */}
           <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-6 group w-fit">
-              <div className="bg-orange-500 p-2 rounded-lg transition-transform group-hover:rotate-12">
-                <Zap size={24} fill="white" className="text-white" />
-              </div>
-              <span className="text-2xl font-black tracking-tighter uppercase">
-                Electric<span className="text-orange-500">ian</span>
-              </span>
+            <Link
+              href="/"
+              className="flex items-center gap-2 mb-6 group w-fit"
+            >
+              <Image
+                src="/assets/weee.png"
+                alt="BijliBaaz"
+                width={150}
+                height={55}
+                className="object-contain transition-transform duration-300 group-hover:scale-105"
+                priority
+              />
+
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Providing top-notch electrical services for residential,

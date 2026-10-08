@@ -84,10 +84,10 @@ const HeroSection = () => {
               }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
+                src="/assets/Main.png"
                 alt="Professional electrician"
                 fill
-                className="object-cover object-center scale-110"
+                className="object-cover object-center scale-99"
                 priority
               />
               <div

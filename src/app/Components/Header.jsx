@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Zap, ChevronDown, ShoppingCart } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import Image from 'next/image';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -46,13 +47,17 @@ const Header = () => {
     <header className="bg-[#f3f3f3] w-full sticky top-0 z-50 shadow-sm font-sans print:hidden">
       <div className="max-w-7xl mx-auto px-6 h-25 flex items-center justify-between">
         {/* Logo Section */}
-        <Link href="/" className="flex items-center gap-1 group">
-          <Zap
-            size={32}
-            fill="#f97316"
-            className="text-[#f97316] transition-transform group-hover:scale-110"
-          />
-          <span className="text-3xl md:text-4xl font-bold text-[#1f2937]">Electrician</span>
+        <Link href="/" className="flex items-center gap-2 group">
+          {/* Dynamic Hover & Scale Effect for Logo */}
+          <div className="relative w-28 h-10 md:w-40 md:h-55 transition-transform group-hover:scale-110">
+            <Image
+              src="/assets/weee.png"
+              alt="Electrician Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
