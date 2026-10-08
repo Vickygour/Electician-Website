@@ -1,7 +1,11 @@
+'use client';
 import React from 'react';
 import { Phone, Zap } from 'lucide-react';
+import { useApp } from '../../context/AppContext';
+import { site } from '../../data/site';
 
 const CallToAction = () => {
+  const { openAppointment } = useApp();
   return (
     <section className="relative w-full min-h-[600px] flex items-center overflow-hidden">
       {/* 1. Split Background Images */}
@@ -47,12 +51,17 @@ const CallToAction = () => {
 
             {/* 6. Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <button className="flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-md transition-all duration-300 w-full sm:w-auto shadow-lg shadow-orange-500/20 active:scale-95">
+              <a
+                href={site.phoneHref}
+                className="flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-md transition-all duration-300 w-full sm:w-auto shadow-lg shadow-orange-500/20 active:scale-95"
+              >
                 <Phone size={18} fill="currentColor" />
                 <span>Give Us a Call</span>
-              </button>
+              </a>
 
-              <button className="flex items-center justify-center gap-2 bg-[#2d323f] hover:bg-[#3d4456] text-white font-bold py-4 px-8 rounded-md transition-all duration-300 w-full sm:w-auto active:scale-95">
+              <button
+                onClick={() => openAppointment({ service: 'Free Estimate / Quote' })}
+                className="flex items-center justify-center gap-2 bg-[#2d323f] hover:bg-[#3d4456] text-white font-bold py-4 px-8 rounded-md transition-all duration-300 w-full sm:w-auto active:scale-95">
                 <Zap size={18} fill="currentColor" />
                 <span>Free Estimate</span>
               </button>
@@ -63,7 +72,11 @@ const CallToAction = () => {
 
       {/* 7. Floating Bottom Icon */}
       <div className="absolute bottom-6 right-6 z-20">
-        <button className="w-14 h-14 bg-[#f97316] hover:bg-orange-600 text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-300 hover:rotate-12 group">
+        <button
+          onClick={() => openAppointment({ service: 'Emergency Repair' })}
+          aria-label="Book emergency service"
+          className="w-14 h-14 bg-[#f97316] hover:bg-orange-600 text-white rounded-full flex items-center justify-center shadow-xl transition-all duration-300 hover:rotate-12 group"
+        >
           <Zap
             size={24}
             fill="white"

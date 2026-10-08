@@ -1,7 +1,9 @@
+'use client';
 import React from 'react';
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
-import { Wind, ShieldCheck, Cpu, ChevronRight } from 'lucide-react';
+import { Wind, ShieldCheck, Cpu, Lightbulb, ChevronRight } from 'lucide-react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -11,6 +13,7 @@ const ServicesSlider = () => {
   const services = [
     {
       title: 'Air Conditioning',
+      slug: 'air-conditioning',
       description:
         'Our installation services ensure that you get the right air conditioner.',
       icon: <Wind className="w-12 h-12 text-white" />,
@@ -19,6 +22,7 @@ const ServicesSlider = () => {
     },
     {
       title: 'Security Systems',
+      slug: 'security-systems',
       description: 'You can view events over a monitor in our home.',
       icon: <ShieldCheck className="w-12 h-12 text-white" />,
       image:
@@ -26,6 +30,7 @@ const ServicesSlider = () => {
     },
     {
       title: 'Panels Changes',
+      slug: 'panel-upgrades',
       description: 'Electrical panels are the heart of your electrical system.',
       icon: <Cpu className="w-12 h-12 text-white" />,
       image:
@@ -33,9 +38,10 @@ const ServicesSlider = () => {
     },
     {
       title: 'Lighting Solutions',
+      slug: 'lighting-design',
       description:
         'Custom lighting designs for both residential and commercial spaces.',
-      icon: <Cpu className="w-12 h-12 text-white" />, // Using Cpu as placeholder for logic
+      icon: <Lightbulb className="w-12 h-12 text-white" />,
       image:
         'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=1935&auto=format&fit=crop',
     },
@@ -123,31 +129,19 @@ const ServicesSlider = () => {
                 </p>
 
                 {/* More Info Link */}
-                <a
-                  href="#"
+                <Link
+                  href={`/services/${service.slug}`}
                   className="flex items-center gap-1 text-sm font-bold text-gray-800 hover:text-[#f97316] transition-colors group/link"
                 >
                   More info
                   <ChevronRight className="w-3 h-3 text-[#f97316] transform transition-transform group-hover/link:translate-x-1" />
-                </a>
+                </Link>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
       </div>
 
-      <style jsx global>{`
-        .swiper-pagination-bullet {
-          width: 8px;
-          height: 8px;
-          background: #d1d5db;
-          opacity: 1;
-        }
-        .swiper-pagination-bullet-active {
-          background: #1f2937 !important;
-          
-        }
-      `}</style>
     </section>
   );
 };

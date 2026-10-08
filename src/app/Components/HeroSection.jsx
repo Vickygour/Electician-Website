@@ -3,17 +3,19 @@
 import React from 'react';
 import Image from 'next/image';
 import { Zap, Phone } from 'lucide-react';
-import AboutSection from '../Components/Aboutsection';
-import ServicesSection from '../Components/ServicesSection';
-import ServicesSlider from '../Components/ServicesSlider';
-import CallToAction from '../Components/CallToAction';
-import OurProjects from '../Components/OurProjects';
-import InfoSection from '../Components/InfoSection';
-import StatsSection from '../Components/StatsSection';
-import MaintenancePlans from '../Components/StatsSection';
-import Video from '../Components/Video';
+import AboutSection from './Aboutsection';
+import ServicesSection from './ServicesSection';
+import ServicesSlider from './ServicesSlider';
+import CallToAction from './CallToAction';
+import OurProjects from './OurProjects';
+import InfoSection from './InfoSection';
+import MaintenancePlans from './StatsSection';
+import Video from './Video';
+import { useApp } from '../../context/AppContext';
+import { site } from '../../data/site';
 
 const HeroSection = () => {
+  const { openAppointment } = useApp();
   return (
     <>
       <section className="relative w-full h-[90vh] min-h-[700px] overflow-hidden flex items-center ">
@@ -49,7 +51,10 @@ const HeroSection = () => {
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
               {/* Primary Button */}
-              <button className="flex items-center gap-2 bg-[#f97316] hover:bg-orange-600 text-white px-8 py-4 rounded-md font-bold transition-all duration-300 group shadow-lg shadow-orange-900/20">
+              <button
+                onClick={() => openAppointment({ service: 'Free Estimate / Quote' })}
+                className="flex items-center gap-2 bg-[#f97316] hover:bg-orange-600 text-white px-8 py-4 rounded-md font-bold transition-all duration-300 group shadow-lg shadow-orange-900/20"
+              >
                 <Zap
                   size={20}
                   fill="white"
@@ -59,10 +64,13 @@ const HeroSection = () => {
               </button>
 
               {/* Outline Button */}
-              <button className="flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-md font-bold hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm">
+              <a
+                href={site.phoneHref}
+                className="flex items-center gap-2 border-2 border-white/30 text-white px-8 py-4 rounded-md font-bold hover:bg-white hover:text-black transition-all duration-300 backdrop-blur-sm"
+              >
                 <Phone size={20} />
-                <span>(555) 123-4567</span>
-              </button>
+                <span>{site.phone}</span>
+              </a>
             </div>
           </div>
 
@@ -71,7 +79,6 @@ const HeroSection = () => {
             <div
               className="relative w-full h-full shadow-2xl"
               style={{
-                // This creates the smooth half-oval cut on the left
                 clipPath: 'ellipse(100% 100% at 100% 50%)',
                 WebkitClipPath: 'ellipse(100% 100% at 100% 50%)',
               }}
@@ -80,10 +87,9 @@ const HeroSection = () => {
                 src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
                 alt="Professional electrician"
                 fill
-                className="object-cover object-center scale-110" // scale-110 helps cover the clip edges perfectly
+                className="object-cover object-center scale-110"
                 priority
               />
-              {/* Darker edge for depth */}
               <div
                 className="absolute inset-0 bg-black/10 pointer-events-none"
                 style={{ clipPath: 'ellipse(100% 100% at 100% 50%)' }}

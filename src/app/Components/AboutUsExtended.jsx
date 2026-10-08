@@ -10,32 +10,11 @@ import {
   Target,
   Heart,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { team as teamData } from '../../data/team';
 
 const AboutUsExtended = () => {
-  // Team Data
-  const team = [
-    {
-      name: 'Robert Fox',
-      role: 'Chief Electrician',
-      img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400',
-    },
-    {
-      name: 'Jane Cooper',
-      role: 'Project Manager',
-      img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400',
-    },
-    {
-      name: 'Cody Fisher',
-      role: 'Safety Inspector',
-      img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400',
-    },
-    {
-      name: 'Guy Hawkins',
-      role: 'Senior Engineer',
-      img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400',
-    },
-  ];
+  const team = teamData.slice(0, 4);
 
   // Values Data
   const values = [
@@ -89,7 +68,7 @@ const AboutUsExtended = () => {
       {/* 2. TEAM SECTION */}
       <section className="py-24 px-6 md:px-20 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-xl">
               <span className="text-orange-500 font-bold text-sm uppercase">
                 Expert People
@@ -98,9 +77,12 @@ const AboutUsExtended = () => {
                 Meet Our Certified Team Members
               </h2>
             </div>
-            <button className="bg-orange-500 text-white px-8 py-4 font-bold uppercase text-xs tracking-widest hover:bg-[#2A2C38] transition-all">
-              Join Our Team
-            </button>
+            <Link
+              href="/about/team"
+              className="bg-orange-500 text-white px-8 py-4 font-bold uppercase text-xs tracking-widest hover:bg-[#2A2C38] transition-all"
+            >
+              Meet Full Team
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

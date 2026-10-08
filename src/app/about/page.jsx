@@ -10,13 +10,14 @@ import {
   Target,
   Rocket,
 } from 'lucide-react';
-import Header from '../Header/page';
-import Footer from '../Components/Footer';
+import Link from 'next/link';
+import { useApp } from '../../context/AppContext';
+import { team } from '../../data/team';
 
 const AboutUs = () => {
+  const { openAppointment } = useApp();
   return (
     <>
-      <Header />
       <section className="relative h-[300px] md:h-[400px] overflow-hidden flex items-center">
         <div
           className="absolute inset-0 z-0 bg-cover bg-center brightness-[0.7]"
@@ -89,9 +90,12 @@ const AboutUs = () => {
                   </div>
                 ))}
               </div>
-              <button className="bg-orange-500 text-white px-10 py-4 font-bold uppercase text-xs tracking-widest hover:bg-[#2A2C38] transition-all shadow-lg">
+              <Link
+                href="/brochure"
+                className="inline-block bg-orange-500 text-white px-10 py-4 font-bold uppercase text-xs tracking-widest hover:bg-[#2A2C38] transition-all shadow-lg"
+              >
                 Download Brochure
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -218,12 +222,18 @@ const AboutUs = () => {
               Ready to start your next electrical project?
             </h2>
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="bg-orange-500 text-white px-8 py-4 font-bold uppercase text-xs tracking-widest hover:scale-105 transition-all">
+              <button
+                onClick={() => openAppointment({ service: 'Free Estimate / Quote' })}
+                className="bg-orange-500 text-white px-8 py-4 font-bold uppercase text-xs tracking-widest hover:scale-105 transition-all"
+              >
                 Request a Quote
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-[#2A2C38] transition-all">
+              <Link
+                href="/contact"
+                className="border-2 border-white text-white px-8 py-4 font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-[#2A2C38] transition-all"
+              >
                 Contact Support
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -244,31 +254,15 @@ const AboutUs = () => {
             experience, innovation, and dedication to every project we
             undertake.
           </p>
+          <div className="-mt-8 mb-12">
+            <Link href="/about/team" className="text-orange-500 font-bold text-sm uppercase tracking-widest hover:underline">
+              See the full team
+            </Link>
+          </div>
 
           {/* Team Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {[
-              {
-                name: 'Michael Carter',
-                role: 'Senior Electrician',
-                img: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=800',
-              },
-              {
-                name: 'Sarah Johnson',
-                role: 'Project Engineer',
-                img: 'https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=800',
-              },
-              {
-                name: 'David Reynolds',
-                role: 'Industrial Specialist',
-                img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800',
-              },
-              {
-                name: 'Emily Watson',
-                role: 'Operations Manager',
-                img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800',
-              },
-            ].map((member, index) => (
+            {team.slice(0, 4).map((member, index) => (
               <div
                 key={index}
                 className="group relative overflow-hidden rounded-sm shadow-lg"
@@ -432,7 +426,6 @@ const AboutUs = () => {
         </div>
       </section>
 
-      <Footer />
     </>
   );
 };

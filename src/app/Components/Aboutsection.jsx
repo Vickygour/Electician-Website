@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 
 const AboutSection = () => {
   const checklistItems = [
@@ -18,7 +19,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* LEFT SIDE — IMAGE COLLAGE LAYOUT */}
           <div className="relative order-2 lg:order-1 pt-10 pb-10 lg:pb-20">
-            <div className="relative z-10 w-[85%] lg:w-[%] ml-auto">
+            <div className="relative z-10 w-[85%] ml-auto">
               {/* Main large image */}
               <div className="relative aspect-[5/5]  overflow-hidden shadow-xl">
                 <Image
@@ -83,7 +84,7 @@ const AboutSection = () => {
 
             {/* BOTTOM SIGNATURE SECTION */}
             <div className="flex flex-wrap items-center gap-8 pt-6">
-              <div className="flex items-center gap-4">
+              <Link href="/about/team" className="flex items-center gap-4 group">
                 <div className="relative w-14 h-14 rounded-full overflow-hidden shadow-md">
                   <Image
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
@@ -96,9 +97,9 @@ const AboutSection = () => {
                   <h4 className="font-bold text-gray-900 text-lg leading-tight">
                     Mark Smith
                   </h4>
-                  <p className="text-sm text-gray-500">Your own electrician</p>
+                  <p className="text-sm text-gray-500 group-hover:text-[#f97316] transition-colors">Your own electrician</p>
                 </div>
-              </div>
+              </Link>
 
               {/* Separator and Signature */}
               <div className="pl-8 border-l border-gray-300">

@@ -1,50 +1,11 @@
-// app/components/OurServices.jsx
 'use client';
 import Image from 'next/image';
-import Header from '../Header/page';
-import Footer from '../Components/Footer';
+import Link from 'next/link';
 import { Check } from 'lucide-react';
+import { services } from '../../data/services';
+import { site } from '../../data/site';
 
 export default function OurServices() {
-  const services = [
-    {
-      title: 'Residential Electrical',
-      description: 'Smart home integration and complete wiring solutions.',
-      image:
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000',
-    },
-    {
-      title: 'Commercial Solutions',
-      description: 'Power distribution for retail and office environments.',
-      image:
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000',
-    },
-    {
-      title: 'Industrial Systems',
-      description: 'Heavy-duty machinery power and automation controls.',
-      image:
-        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000',
-    },
-    {
-      title: 'Lighting Design',
-      description: 'Architectural LED installations and retrofit upgrades.',
-      image:
-        'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&q=80&w=1000',
-    },
-    {
-      title: 'Solar & Energy',
-      description: 'Sustainable photovoltaic systems and battery storage.',
-      image:
-        'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=1000',
-    },
-    {
-      title: 'Maintenance & Repair',
-      description: '24/7 emergency response and preventative care.',
-      image:
-        'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000',
-    },
-  ];
-
   const points = [
     'Fully screened and background checked for your peace of mind',
     'We don’t hire anyone we wouldn’t hire to work inside of our own homes.',
@@ -57,7 +18,6 @@ export default function OurServices() {
 
   return (
     <>
-      <Header />
       <section className="relative h-[300px] md:h-[400px] overflow-hidden flex items-center">
         <div
           className="absolute inset-0 z-0 bg-cover bg-center brightness-[0.7]"
@@ -121,9 +81,9 @@ export default function OurServices() {
                 </svg>
                 Call us today
               </p>
-              <p className="text-[#f97316] text-3xl font-bold leading-none mb-1">
-                1-(800)-765-43-21
-              </p>
+              <a href={site.phoneHref} className="block text-[#f97316] text-3xl font-bold leading-none mb-1 hover:underline">
+                {site.phone}
+              </a>
               <p className="text-gray-500 text-sm">
                 We're available 24/7, 365 days a year.
               </p>
@@ -148,9 +108,10 @@ export default function OurServices() {
           {/* Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="group relative h-80 w-full overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2"
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}`}
+                className="group relative block h-80 w-full overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 ease-out hover:-translate-y-2"
               >
                 {/* Background Image with Zoom Effect */}
                 <div className="absolute inset-0 w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-110">
@@ -176,7 +137,7 @@ export default function OurServices() {
                   </h3>
 
                   <p className="text-slate-300 text-sm leading-relaxed mb-4 opacity-0 transform translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0 delay-75">
-                    {service.description}
+                    {service.short}
                   </p>
 
                   {/* Learn More Link */}
@@ -198,7 +159,7 @@ export default function OurServices() {
                     </svg>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -261,8 +222,6 @@ export default function OurServices() {
         </div>
       </section>
 
-      
-      <Footer />
     </>
   );
 }

@@ -2,10 +2,18 @@
 import React, { useState } from 'react';
 import { Play, X, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
+import { site } from '../../data/site';
 
 const VideoSection = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const videoId = 'dQw4w9WgXcQ'; // Apni YouTube ID yahan dalein
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e) => e.key === 'Escape' && setIsOpen(false);
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [isOpen]);
+  const videoId = site.videoId; // YouTube ID: src/data/site.js me change karo
 
   return (
     <section className="relative w-full md:h-[600px] flex flex-col md:flex-row overflow-visible font-sans bg-white mb-20 md:mb-0">
@@ -58,16 +66,19 @@ const VideoSection = () => {
             emergency repair.
           </p>
 
-          <button className="mt-8 bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-sm font-bold flex items-center gap-3 transition-all uppercase text-xs tracking-widest shadow-lg shadow-orange-200">
+          <Link
+            href="/services"
+            className="mt-8 w-fit bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-sm font-bold flex items-center gap-3 transition-all uppercase text-xs tracking-widest shadow-lg shadow-orange-200"
+          >
             <Zap size={16} fill="white" />
             Explore services
-          </button>
+          </Link>
         </div>
 
         {/* Floating Lightning Bolt Icon */}
-        <div className="absolute bottom-6 right-6 w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-xl cursor-pointer hover:rotate-12 transition-transform z-40">
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top" className="absolute bottom-6 right-6 w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center text-white shadow-xl cursor-pointer hover:rotate-12 transition-transform z-40">
           <Zap size={28} fill="white" />
-        </div>
+        </button>
       </div>
 
       {/* --- YouTube Modal --- */}

@@ -1,0 +1,10 @@
+export const testimonials = [
+  { name: 'Teresa and Kevin K.', rating: 5, text: "We've been using your company and from the very beginning found him and his team to be extremely professional and knowledgeable.", avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200', service: 'Residential' },
+  { name: 'John Doe', rating: 5, text: 'Excellent service! The team was on time and fixed the issue quickly.', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200', service: 'Repair' },
+  { name: 'Priya Sharma', rating: 5, text: 'They rewired our entire office over a weekend so there was zero downtime on Monday. Neat work and clear communication.', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200', service: 'Commercial' },
+  { name: 'Robert Hall', rating: 4, text: 'Fair pricing and very tidy. The panel upgrade took a day and they explained everything they did.', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200', service: 'Panel Upgrade' },
+  { name: 'Anita Verma', rating: 5, text: 'Called at midnight when the power tripped. The electrician was at my door within the hour. Lifesaver!', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200', service: 'Emergency' },
+  { name: 'Mark Allen', rating: 5, text: 'Our factory line stopped on a Friday evening. They diagnosed and fixed the motor control fault the same night.', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200', service: 'Industrial' },
+  { name: 'Sophia Lee', rating: 4, text: 'The new LED lighting looks beautiful and our electricity bill has gone down noticeably.', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200', service: 'Lighting' },
+  { name: 'Daniel Brooks', rating: 5, text: 'Solar installation was smooth from survey to net-metering. Highly recommended.', avatar: 'https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=200', service: 'Solar' },
+];

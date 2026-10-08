@@ -1,13 +1,48 @@
 'use client';
-import React from 'react';
-import { Mail, Phone, MapPin, Clock, Send, Zap } from 'lucide-react';
-import Header from '../Header/page';
-import Footer from '../Components/Footer';
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle2 } from 'lucide-react';
+import { site } from '../../data/site';
+import { useApp, pushStore, makeId } from '../../context/AppContext';
+
+const services = ['Residential Service', 'Industrial Systems', 'Emergency Repair', 'Solar Installation'];
+const blank = { name: '', email: '', phone: '', service: services[0], message: '' };
 
 const ContactPage = () => {
+  const { toast } = useApp();
+  const [form, setForm] = useState(blank);
+  const [errors, setErrors] = useState({});
+  const [sent, setSent] = useState(null);
+
+  const set = (k) => (e) => {
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+    if (errors[k]) setErrors((x) => ({ ...x, [k]: undefined }));
+  };
+
+  const submit = (e) => {
+    e.preventDefault();
+    const err = {};
+    if (form.name.trim().length < 2) err.name = 'Please enter your name.';
+    if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) err.email = 'Enter a valid email address.';
+    if (form.phone.trim() && !/^[+\d][\d\s\-()]{6,17}$/.test(form.phone.trim())) err.phone = 'Enter a valid phone number.';
+    if (form.message.trim().length < 10) err.message = 'Message should be at least 10 characters.';
+    setErrors(err);
+    if (Object.keys(err).length) {
+      toast('Please fix the highlighted fields.', 'error');
+      return;
+    }
+    const msg = { id: makeId('MSG'), ...form, createdAt: new Date().toISOString() };
+    pushStore('electrician_messages', msg);
+    setSent(msg);
+    setForm(blank);
+    toast('Message sent successfully!');
+  };
+
+  const field = (k) =>
+    `p-4 border outline-none focus:border-orange-500 transition-all bg-white ${errors[k] ? 'border-red-400' : 'border-gray-200'}`;
+  const err = (k) => errors[k] && <span className="text-red-500 text-xs">{errors[k]}</span>;
+
   return (
     <div className="bg-white font-sans">
-      <Header />
 
       {/* 1. CONTACT BANNER (Full Color & Professional) */}
       <section className="relative h-[300px] md:h-[400px] overflow-hidden flex items-center">
@@ -53,9 +88,9 @@ const ContactPage = () => {
                   <h4 className="font-bold text-slate-800 uppercase text-xs tracking-widest mb-1">
                     Call Us 24/7
                   </h4>
-                  <p className="text-lg font-black text-slate-700">
-                    +1 (800) 123-4567
-                  </p>
+                  <a href={site.phoneHref} className="text-lg font-black text-slate-700 hover:text-orange-500">
+                    {site.phone}
+                  </a>
                 </div>
               </div>
 
@@ -67,9 +102,9 @@ const ContactPage = () => {
                   <h4 className="font-bold text-slate-800 uppercase text-xs tracking-widest mb-1">
                     Email Address
                   </h4>
-                  <p className="text-lg font-bold text-slate-700">
-                    info@electricianpro.com
-                  </p>
+                  <a href={`mailto:${site.email}`} className="text-lg font-bold text-slate-700 hover:text-orange-500">
+                    {site.email}
+                  </a>
                 </div>
               </div>
 
@@ -81,9 +116,7 @@ const ContactPage = () => {
                   <h4 className="font-bold text-slate-800 uppercase text-xs tracking-widest mb-1">
                     Our Location
                   </h4>
-                  <p className="text-gray-600">
-                    123 Energy Way, Power City, ST 45678
-                  </p>
+                  <p className="text-gray-600">{site.address}</p>
                 </div>
               </div>
 
@@ -96,9 +129,9 @@ const ContactPage = () => {
                     Working Hours
                   </h4>
                   <p className="text-gray-600">
-                    Mon - Sat: 08:00 AM - 06:00 PM <br />{' '}
+                    {site.hours} <br />{' '}
                     <span className="text-orange-500 font-bold underline">
-                      Emergency: 24/7
+                      {site.emergency}
                     </span>
                   </p>
                 </div>
@@ -118,60 +151,55 @@ const ContactPage = () => {
               </p>
             </div>
 
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {sent && (
+              <div className="mb-8 flex items-start gap-3 bg-green-50 border border-green-200 text-green-800 p-4">
+                <CheckCircle2 className="shrink-0 mt-0.5" size={20} />
+                <p className="text-sm">
+                  Thank you! Your message (ref <b>{sent.id}</b>) has been received. We will reply within 24 hours.
+                </p>
+              </div>
+            )}
+            <form onSubmit={submit} noValidate className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-600">
+                <label htmlFor="c-name" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Full Name
                 </label>
-                <input
-                  type="text"
-                  placeholder="e.g. John Doe"
-                  className="p-4 border border-gray-200 outline-none focus:border-orange-500 transition-all bg-white"
-                />
+                <input id="c-name" type="text" value={form.name} onChange={set('name')} placeholder="e.g. John Doe" className={field('name')} />
+                {err('name')}
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-600">
+                <label htmlFor="c-email" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Email Address
                 </label>
-                <input
-                  type="email"
-                  placeholder="john@example.com"
-                  className="p-4 border border-gray-200 outline-none focus:border-orange-500 transition-all bg-white"
-                />
+                <input id="c-email" type="email" value={form.email} onChange={set('email')} placeholder="john@example.com" className={field('email')} />
+                {err('email')}
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-600">
+                <label htmlFor="c-phone" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Phone Number
                 </label>
-                <input
-                  type="text"
-                  placeholder="+1 (000) 000-0000"
-                  className="p-4 border border-gray-200 outline-none focus:border-orange-500 transition-all bg-white"
-                />
+                <input id="c-phone" type="tel" value={form.phone} onChange={set('phone')} placeholder="+1 (000) 000-0000" className={field('phone')} />
+                {err('phone')}
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-600">
+                <label htmlFor="c-service" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Service Needed
                 </label>
-                <select className="p-4 border border-gray-200 outline-none focus:border-orange-500 transition-all bg-white appearance-none">
-                  <option>Residential Service</option>
-                  <option>Industrial Systems</option>
-                  <option>Emergency Repair</option>
-                  <option>Solar Installation</option>
+                <select id="c-service" value={form.service} onChange={set('service')} className={`${field('service')} appearance-none`}>
+                  {services.map((o) => (
+                    <option key={o}>{o}</option>
+                  ))}
                 </select>
               </div>
               <div className="flex flex-col gap-2 md:col-span-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-600">
+                <label htmlFor="c-msg" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Your Message
                 </label>
-                <textarea
-                  rows="5"
-                  placeholder="Tell us about your project..."
-                  className="p-4 border border-gray-200 outline-none focus:border-orange-500 transition-all bg-white resize-none"
-                ></textarea>
+                <textarea id="c-msg" rows="5" value={form.message} onChange={set('message')} placeholder="Tell us about your project..." className={`${field('message')} resize-none`}></textarea>
+                {err('message')}
               </div>
               <div className="md:col-span-2">
-                <button className="w-full bg-orange-500 text-white font-black py-5 uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#2A2C38] transition-all shadow-xl shadow-orange-100">
+                <button type="submit" className="w-full bg-orange-500 text-white font-black py-5 uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#2A2C38] transition-all shadow-xl shadow-orange-100">
                   <Send size={18} /> Submit Request
                 </button>
               </div>
@@ -194,7 +222,6 @@ const ContactPage = () => {
         ></iframe>
       </section>
 
-      <Footer />
     </div>
   );
 };

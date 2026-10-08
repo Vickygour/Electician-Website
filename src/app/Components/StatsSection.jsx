@@ -1,26 +1,35 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { Check, Home, Zap } from 'lucide-react';
+import { plans } from '../../data/plans';
+import { useApp } from '../../context/AppContext';
 
-const PlanCard = ({ type, title, price, features, isFeatured }) => (
+export const PlanCard = ({ plan, price, period = '/mo', isFeatured, onOrder }) => (
   <div
     className={`bg-white p-8 rounded-sm shadow-xl flex flex-col items-center border-t-4 ${isFeatured ? 'border-orange-500' : 'border-transparent'}`}
   >
     <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-6">
-      {type === 'res' ? <Home size={32} /> : <Zap size={32} />}
+      {plan.type === 'res' ? <Home size={32} /> : <Zap size={32} />}
     </div>
-    <h3 className="text-2xl font-extrabold text-slate-800 mb-6">{title}</h3>
+    <h3 className="text-2xl font-extrabold text-slate-800 mb-6">{plan.title}</h3>
     <ul className="w-full space-y-3 mb-10">
-      {features.map((f, i) => (
+      {plan.features.map((f, i) => (
         <li key={i} className="flex items-center gap-3 text-sm text-gray-500">
-          <Check size={14} className="text-orange-500 font-bold" />
+          <Check size={14} className="text-orange-500 font-bold shrink-0" />
           {f}
         </li>
       ))}
     </ul>
     <div className="mt-auto pt-6 border-t w-full text-center">
-      <h4 className="text-4xl font-extrabold text-slate-700">${price}</h4>
-      <button className="mt-4 text-xs font-bold uppercase tracking-widest text-slate-800 hover:text-orange-500 transition-colors">
+      <h4 className="text-4xl font-extrabold text-slate-700">
+        ${Number(price).toFixed(2)}
+        <span className="text-base font-medium text-gray-400">{period}</span>
+      </h4>
+      <button
+        onClick={onOrder}
+        className="mt-4 text-xs font-bold uppercase tracking-widest text-slate-800 hover:text-orange-500 transition-colors"
+      >
         Order Now
       </button>
     </div>
@@ -28,51 +37,7 @@ const PlanCard = ({ type, title, price, features, isFeatured }) => (
 );
 
 const MaintenancePlans = () => {
-  const plans = [
-    {
-      type: 'res',
-      title: 'Residential Service',
-      price: '12.00',
-      features: [
-        'Annual A/C inspection',
-        'Annual electrical inspection',
-        'Design-Build Services',
-        'Supply and install Sensor light',
-        'Lighting Fixtures',
-        'Replace hot plates',
-        'Switchboard Upgrade',
-      ],
-    },
-    {
-      type: 'com',
-      title: 'Commercial Service',
-      price: '89.00',
-      features: [
-        'Indoor/outdoor Lighting Installation',
-        'Appliance & Fixture Installation',
-        'Annual Electrical Inspection',
-        'Ceiling Fan Installation',
-        'New & Replacement Wiring',
-        'Surge Protection Maintenance',
-        '24-hour Response',
-      ],
-    },
-    {
-      type: 'com',
-      title: 'Commercial Service',
-      price: '89.00',
-      features: [
-        'Indoor/outdoor Lighting Installation',
-        'Appliance & Fixture Installation',
-        'Annual Electrical Inspection',
-        'Ceiling Fan Installation',
-        'New & Replacement Wiring',
-        'Surge Protection Maintenance',
-        '24-hour Response',
-      ],
-    },
-  ];
-
+  const { openAppointment } = useApp();
   return (
     <section className="bg-slate-50 py-20 px-6">
       <div className="max-w-7xl mx-auto text-center">
@@ -100,15 +65,22 @@ const MaintenancePlans = () => {
           </div>
 
           {plans.map((plan, i) => (
-            <PlanCard key={i} {...plan} isFeatured={i === 1} />
+            <PlanCard
+              key={plan.id}
+              plan={plan}
+              price={plan.price}
+              isFeatured={i === 1}
+              onOrder={() => openAppointment({ service: 'Free Estimate / Quote', message: `I am interested in the ${plan.title} plan.` })}
+            />
           ))}
         </div>
 
-        {/* Pagination Dots (UI mock) */}
-        <div className="flex justify-center gap-2 mt-12">
-          <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-          <div className="w-2 h-2 rounded-full bg-gray-800"></div>
-        </div>
+        <Link
+          href="/prices"
+          className="inline-block mt-12 text-sm font-bold uppercase tracking-widest text-slate-800 hover:text-orange-500 border-b-2 border-orange-500 pb-1 transition-colors"
+        >
+          Compare all prices
+        </Link>
       </div>
     </section>
   );

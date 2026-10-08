@@ -1,0 +1,47 @@
+export const plans = [
+  {
+    id: 'residential',
+    type: 'res',
+    title: 'Residential Service',
+    price: 12,
+    features: [
+      'Annual A/C inspection',
+      'Annual electrical inspection',
+      'Design-Build Services',
+      'Supply and install Sensor light',
+      'Lighting Fixtures',
+      'Replace hot plates',
+      'Switchboard Upgrade',
+    ],
+  },
+  {
+    id: 'commercial',
+    type: 'com',
+    title: 'Commercial Service',
+    price: 89,
+    features: [
+      'Indoor/outdoor Lighting Installation',
+      'Appliance & Fixture Installation',
+      'Annual Electrical Inspection',
+      'Ceiling Fan Installation',
+      'New & Replacement Wiring',
+      'Surge Protection Maintenance',
+      '24-hour Response',
+    ],
+  },
+  {
+    id: 'industrial',
+    type: 'com',
+    title: 'Industrial Service',
+    price: 249,
+    features: [
+      'Quarterly panel thermography',
+      'Motor and drive inspection',
+      'Earthing and insulation tests',
+      'Preventive maintenance schedule',
+      'Priority breakdown support',
+      'Energy usage report',
+      '4-hour Emergency Response',
+    ],
+  },
+];

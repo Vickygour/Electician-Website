@@ -1,33 +1,56 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
-import { Quote, Phone } from 'lucide-react';
+import { Phone } from 'lucide-react';
+import { site } from '../../data/site';
+import { testimonials } from '../../data/testimonials';
 
 // Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 const stats = [
-  { label: 'Residential Projects', value: '5000+' },
-  { label: 'Commercial Projects', value: '1500+' },
-  { label: 'Industrial Projects', value: '1000+' },
+  { label: 'Residential Projects', value: 5000 },
+  { label: 'Commercial Projects', value: 1500 },
+  { label: 'Industrial Projects', value: 1000 },
 ];
 
-const testimonials = [
-  {
-    name: 'Teresa and Kevin K.',
-    text: "We've been using your company and from the very beginning found him and his team to be extremely professional and knowledgeable.",
-    avatar:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200',
-  },
-  {
-    name: 'John Doe',
-    text: 'Excellent service! The team was on time and fixed the issue quickly.',
-    avatar:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200',
-  },
-];
+// Number 0 se target tak animate hota hai jab section screen par aata hai
+function Counter({ to }) {
+  const ref = useRef(null);
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    let raf;
+    const run = () => {
+      const start = performance.now();
+      const dur = 1600;
+      const tick = (t) => {
+        const p = Math.min((t - start) / dur, 1);
+        setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          run();
+          io.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [to]);
+  return <span ref={ref}>{n.toLocaleString('en-US')}+</span>;
+}
 
 export default function InfoSection() {
   return (
@@ -44,7 +67,7 @@ export default function InfoSection() {
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-8 w-full">
             {stats.map((stat, index) => (
               <div key={index}>
-                <div className="text-4xl font-extrabold">{stat.value}</div>
+                <div className="text-4xl font-extrabold"><Counter to={stat.value} /></div>
                 <div className="text-gray-400 text-sm">{stat.label}</div>
               </div>
             ))}
@@ -61,13 +84,13 @@ export default function InfoSection() {
             autoplay={{ delay: 5000 }}
             className="pb-12"
           >
-            {testimonials.map((item, idx) => (
+            {testimonials.slice(0, 5).map((item, idx) => (
               <SwiperSlide key={idx}>
                 <div className="flex flex-col md:flex-row gap-6">
                   <img
                     src={item.avatar}
                     className="w-20 h-20 rounded-full object-cover"
-                    alt=""
+                    alt={item.name}
                   />
                   <div>
                     <span className="text-orange-500 font-bold text-xs uppercase">
@@ -98,7 +121,7 @@ export default function InfoSection() {
             </p>
             <div className="flex items-center gap-2 font-bold">
               <Phone size={18} />
-              <span>1 (800) 765-43-21</span>
+              <a href={site.phoneHref} className="hover:underline">{site.phone}</a>
             </div>
           </div>
         </div>

@@ -1,16 +1,20 @@
+'use client';
 import React from 'react';
+import Link from 'next/link';
 import { Zap, Plus } from 'lucide-react';
 
 const ServicesSection = () => {
   const services = [
     {
       title: 'Commercial',
+      slug: 'commercial-solutions',
       image:
         'https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop',
       clipClass: 'lg:[clip-path:polygon(0_0,100%_0,85%_100%,0%_100%)]',
     },
     {
       title: 'Industrial',
+      slug: 'industrial-systems',
       image:
         'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop',
       // This panel has slanted edges on both sides to create the overlap effect
@@ -19,6 +23,7 @@ const ServicesSection = () => {
     },
     {
       title: 'Residential',
+      slug: 'residential-electrical',
       image:
         'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop',
       clipClass:
@@ -56,9 +61,13 @@ const ServicesSection = () => {
             </h3>
 
             {/* Orange Plus Button */}
-            <button className="w-16 h-16 bg-[#f97316] rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:bg-orange-600 group-hover:scale-110">
+            <Link
+              href={`/services/${service.slug}`}
+              aria-label={`${service.title} services`}
+              className="w-16 h-16 bg-[#f97316] rounded-full flex items-center justify-center shadow-2xl transform transition-all duration-300 hover:bg-orange-600 group-hover:scale-110"
+            >
               <Plus size={32} strokeWidth={3} />
-            </button>
+            </Link>
           </div>
         </div>
       ))}
