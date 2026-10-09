@@ -19,6 +19,9 @@ export const metadata = {
   },
   description:
     "Certified electricians for residential, commercial and industrial work. Emergency repairs, rewiring, lighting, solar and maintenance plans.",
+  verification: {
+    google: "edZY5jVyuplh1xiTkDpHmYpCMZWsS-Hpv3OVyCTKDeE",
+  },
 };
 
 export default function RootLayout({ children }) {
