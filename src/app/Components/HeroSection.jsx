@@ -285,9 +285,7 @@ const HeroSection = () => {
               </div>
 
               <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-lg mb-8 sm:mb-10 leading-relaxed">
-                From emergency repairs to complete rewiring, our certified
-                electricians deliver safe, reliable, and affordable electrical
-                solutions for your home and business.
+                BijliBaaz provides electrical repair, wiring, installation, and maintenance services for homes and businesses. Contact our team for your electrical service requirements, with service availability across Burari, Jharoda Majra, and nearby areas.
               </p>
 
               <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full sm:w-auto">

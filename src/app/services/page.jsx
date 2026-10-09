@@ -55,13 +55,12 @@ export default function OurServices() {
               Our Services
             </p>
             <h2 className="text-slate-800 text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Responsive &amp; Professional
+              Residential Electrical  &amp; Services
             </h2>
             <p className="text-gray-500 text-lg leading-relaxed mb-10">
-              We provide reliable, high-quality electrical and corporate
-              installation services with an emphasis on precision and safety.
-              Every project is handled by certified professionals with an
-              unwavering commitment to excellence.
+              Electrical repair, wiring, lighting installation, switch replacement, and other electrical work for homes and apartments.Electrical installation, lighting solutions, wiring, and maintenance for offices, shops, and commercial spaces.Electrical maintenance, troubleshooting, and installation support for industrial facilities, subject to service availability.
+
+
             </p>
             <div>
               <p className="text-slate-800 font-medium mb-2 flex items-center gap-2">
@@ -100,8 +99,8 @@ export default function OurServices() {
               Our Services
             </h2>
             <p className="text-slate-500 max-w-2xl mx-auto text-lg font-light">
-              Engineering excellence delivered through precision, safety, and
-              modern infrastructure solutions.
+              Get assistance with common electrical problems, including faulty switches, power interruptions, and electrical troubleshooting.
+
             </p>
           </div>
 

@@ -9,7 +9,7 @@ export const services = [
   {
     slug: 'residential-electrical',
     title: 'Residential Electrical',
-    short: 'Smart home integration and complete wiring solutions.',
+    short: 'Electrical repair, wiring, lighting installation, switch replacement, and other electrical work for homes and apartments.',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000',
     from: 45,
     overview:
@@ -26,7 +26,7 @@ export const services = [
   {
     slug: 'commercial-solutions',
     title: 'Commercial Solutions',
-    short: 'Power distribution for retail and office environments.',
+    short: 'Electrical installation, lighting solutions, wiring, and maintenance for offices, shops, and commercial spaces.',
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000',
     from: 120,
     overview:
@@ -43,7 +43,7 @@ export const services = [
   {
     slug: 'industrial-systems',
     title: 'Industrial Systems',
-    short: 'Heavy-duty machinery power and automation controls.',
+    short: 'Electrical maintenance, troubleshooting, and installation support for industrial facilities, subject to service availability.',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000',
     from: 250,
     overview:
@@ -60,7 +60,7 @@ export const services = [
   {
     slug: 'lighting-design',
     title: 'Lighting Design',
-    short: 'Architectural LED installations and retrofit upgrades.',
+    short: 'Indoor and outdoor lighting installation, lighting fixture replacement, and lighting upgrades.',
     image: 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&q=80&w=1000',
     from: 80,
     overview:
