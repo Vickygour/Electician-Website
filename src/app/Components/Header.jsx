@@ -24,7 +24,7 @@ const navLinks = [
   { name: 'Gallery', href: '/gallery' },
   { name: 'Blog', href: '/blog' },
   { name: 'Shop', href: '/shop' },
-  { name: 'Faq', href: '/faq' },
+  // { name: 'Faq', href: '/faq' },
   { name: 'Contact', href: '/contact' },
 ];
 

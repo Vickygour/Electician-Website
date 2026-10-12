@@ -6,6 +6,7 @@ import { Check } from 'lucide-react';
 import Link from 'next/link';
 
 const AboutSection = () => {
+
   const checklistItems = [
     'Full-service electrical layout, design',
     'Wiring and installation/upgrades',
@@ -26,7 +27,7 @@ const AboutSection = () => {
               <div className="relative aspect-[5/5] overflow-hidden shadow-xl rounded-sm">
                 <Image
                   src="/assets/layout01-img01.jpg"
-                  alt="Electrician working"
+                  alt="BijliBaaz electrician providing residential electrical services in Delhi"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 85vw, 45vw"
@@ -39,7 +40,7 @@ const AboutSection = () => {
               <div className="relative aspect-[3/2] overflow-hidden shadow-2xl rounded-sm ring-4 ring-[#f5f5f5]">
                 <Image
                   src="/assets/layout01-img02.jpg"
-                  alt="Electrical power lines"
+                  alt="Commercial electrical wiring and power solutions by BijliBaaz"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 60vw, 30vw"
@@ -58,20 +59,25 @@ const AboutSection = () => {
           <div className="order-1 lg:order-2 text-center lg:text-left">
 
             <span className="text-[#f97316] text-xs sm:text-sm font-semibold uppercase tracking-[0.15em] block mb-3 sm:mb-4">
-              About Us
+              About BijliBaaz
             </span>
 
+            {/* ✅ SAHI: H2 tag (Homepage ke liye) */}
             <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-gray-800 leading-[1.2] mb-5 sm:mb-6">
-              Outstanding Residential &{' '}
+              Reliable Electrical Services for{' '}
               <br className="hidden sm:block" />
-              Commercial Services
+              Homes and Businesses
             </h2>
 
             <p className="text-gray-600 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 mb-7 sm:mb-8 leading-relaxed">
-              All of our services are backed by our 100% satisfaction guarantee.
-              Our electricians can install anything from new security lighting
-              for your outdoors to a whole home generator that will keep your
-              appliances working during a power outage.
+              <strong>BijliBaaz Electrical Services</strong> is committed to providing
+              safe, reliable, and affordable solutions for every customer. From
+              <strong> residential electrical services</strong> like home wiring and
+              lighting to <strong>commercial electrical services</strong> for offices
+              and shops, our certified electricians handle it all with a 100%
+              satisfaction guarantee. Whether you need a new security light
+              installed outdoors or a whole-home generator to keep your appliances
+              running during a power outage, we have you covered.
             </p>
 
             {/* Checklist */}
@@ -96,32 +102,13 @@ const AboutSection = () => {
             {/* Signature section */}
             <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 sm:gap-8 pt-6 border-t border-gray-200 justify-center lg:justify-start">
 
-              <Link href="/about/team" className="flex items-center gap-4 group">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden shadow-md ring-2 ring-white shrink-0">
-                  <Image
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop"
-                    alt="Mark Smith"
-                    fill
-                    className="object-cover"
-                    sizes="56px"
-                  />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-bold text-gray-900 text-base sm:text-lg leading-tight">
-                    Mark Smith
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-500 group-hover:text-[#f97316] transition-colors">
-                    Your own electrician
-                  </p>
-                </div>
+              <Link href="/about" className="group">
+                <span className="inline-flex items-center gap-2 text-[#f97316] font-semibold text-sm sm:text-base group-hover:gap-3 transition-all">
+                  Learn More About Us
+                  <span aria-hidden="true">→</span>
+                </span>
               </Link>
 
-              {/* Signature */}
-              <div className="sm:pl-8 sm:border-l border-gray-300">
-                <span className="text-2xl sm:text-3xl font-serif italic text-gray-700 opacity-80 select-none">
-                  Mark Smith
-                </span>
-              </div>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import PageBanner from '../../Components/PageBanner';
 import Stars from '../../Components/Stars';
 import { testimonials as base } from '../../../data/testimonials';
 import { useApp, readStore, pushStore } from '../../../context/AppContext';
+import { filter } from 'framer-motion/client';
 
 const filters = ['All', '5 stars', '4 stars'];
 

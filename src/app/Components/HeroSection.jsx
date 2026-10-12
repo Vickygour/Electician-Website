@@ -18,7 +18,7 @@ const HeroSection = () => {
   const { openAppointment } = useApp();
 
   const heroImg =
-    '/assets/Main.png';
+    '/assets/electrician-services-burari-delhi.png';
 
   return (
     <>
@@ -187,7 +187,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1507494924047-60b8ee826ca9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGVsZWN0cmljaWFufGVufDB8fDB8fHww"
-            alt="Modern Interior Background"
+            alt="Electrician working on wiring in Burari, Delhi" 
             fill
             className="object-cover blur-[2px]"
             priority
@@ -206,7 +206,7 @@ const HeroSection = () => {
           >
             <Image
               src={heroImg}
-              alt="Professional electrician"
+              alt="Professional electrician providing services in Burari, Delhi"
               fill
               className="object-cover object-center"
               priority
@@ -280,7 +280,7 @@ const HeroSection = () => {
                   </span>
 
                   <br />
-                  <span className="text-white">Electrical Services.</span>
+                  <span className="text-white">Electrical Services in Burari, Delhi.</span>
                 </h1>
               </div>
 
@@ -312,7 +312,7 @@ const HeroSection = () => {
               <div className="relative w-full aspect-[4/5] sm:aspect-[5/5] md:aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
                 <Image
                   src={heroImg}
-                  alt="Professional electrician"
+                  alt="Professional electrician providing services in Burari, Delhi"
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1023px) 90vw, 100vw"

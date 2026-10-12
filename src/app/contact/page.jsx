@@ -58,8 +58,9 @@ const ContactPage = () => {
           <span className="text-orange-500 font-bold uppercase tracking-[0.3em] text-xs mb-4 block">
             Get In Touch
           </span>
+          {/* 👈 BADLAV 1: H1 mein "BijliBaaz" add kiya */}
           <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight">
-            Contact <span className="text-orange-500">Us</span>
+            Contact <span className="text-orange-500">BijliBaaz</span>
           </h1>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-1.5 bg-orange-500 z-20" />
@@ -74,9 +75,12 @@ const ContactPage = () => {
               Contact Information
               <span className="absolute -bottom-3 left-0 w-12 h-1 bg-orange-500"></span>
             </h2>
+            {/* 👈 BADLAV 2: Secondary Keywords naturally add kiye */}
             <p className="text-gray-500 mb-10 leading-relaxed">
-              Have an electrical emergency or planning a new project? Reach out
-              to our experts today.
+              Have an electrical emergency or planning a new project?
+              For any <strong>electrical service request</strong> or
+              <strong> electrician enquiry</strong>, reach out to our experts today.
+              We're here to help with all your electrical needs.
             </p>
 
             <div className="space-y-8">
@@ -142,12 +146,13 @@ const ContactPage = () => {
           {/* Right: Contact Form (Professional Card Style) */}
           <div className="w-full lg:w-2/3 bg-slate-50 p-8 md:p-12 shadow-2xl border-t-8 border-[#2A2C38] rounded-sm">
             <div className="mb-10">
+              {/* 👈 BADLAV 3: H3 mein "Contact BijliBaaz" ka reference */}
               <h3 className="text-3xl font-black text-slate-800 mb-2">
                 Send Us a Message
               </h3>
               <p className="text-gray-500">
                 Fill out the form below and we'll get back to you within 24
-                hours.
+                hours. Share your <strong>electrical service request</strong> with us.
               </p>
             </div>
 
@@ -164,21 +169,23 @@ const ContactPage = () => {
                 <label htmlFor="c-name" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Full Name
                 </label>
-                <input id="c-name" type="text" value={form.name} onChange={set('name')} placeholder="e.g. John Doe" className={field('name')} />
+                <input id="c-name" type="text" value={form.name} onChange={set('name')} placeholder="e.g. Ramesh Kumar" className={field('name')} />
                 {err('name')}
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="c-email" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Email Address
                 </label>
-                <input id="c-email" type="email" value={form.email} onChange={set('email')} placeholder="john@example.com" className={field('email')} />
+                {/* 👈 BADLAV 4: Email placeholder neutral kiya */}
+                <input id="c-email" type="email" value={form.email} onChange={set('email')} placeholder="yourname@email.com" className={field('email')} />
                 {err('email')}
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="c-phone" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Phone Number
                 </label>
-                <input id="c-phone" type="tel" value={form.phone} onChange={set('phone')} placeholder="+1 (000) 000-0000" className={field('phone')} />
+                {/* 👈 BADLAV 5: Phone placeholder Indian format */}
+                <input id="c-phone" type="tel" value={form.phone} onChange={set('phone')} placeholder="+91 98765 43210" className={field('phone')} />
                 {err('phone')}
               </div>
               <div className="flex flex-col gap-2">
@@ -195,7 +202,7 @@ const ContactPage = () => {
                 <label htmlFor="c-msg" className="text-xs font-bold uppercase tracking-widest text-slate-600">
                   Your Message
                 </label>
-                <textarea id="c-msg" rows="5" value={form.message} onChange={set('message')} placeholder="Tell us about your project..." className={`${field('message')} resize-none`}></textarea>
+                <textarea id="c-msg" rows="5" value={form.message} onChange={set('message')} placeholder="Tell us about your electrical requirements..." className={`${field('message')} resize-none`}></textarea>
                 {err('message')}
               </div>
               <div className="md:col-span-2">
@@ -211,7 +218,7 @@ const ContactPage = () => {
       {/* 3. GOOGLE MAP (Full Width Placeholder) */}
       <section className="w-full h-[450px] bg-gray-200 relative">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.305935303!2d-74.25986548248684!3d40.69714942211307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.9114103377575!2d77.20059131482214!3d28.7040599823545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sBurari%2C%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
           width="100%"
           height="100%"
           style={{ border: 0 }}

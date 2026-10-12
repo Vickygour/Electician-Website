@@ -7,6 +7,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: {
     default: "Electrician | Professional Electrical Services 24/7",
-    template: "%s | Electrician",
+    template: "%s | BijliBaaz",
   },
   description:
     "Certified electricians for residential, commercial and industrial work. Emergency repairs, rewiring, lighting, solar and maintenance plans.",
