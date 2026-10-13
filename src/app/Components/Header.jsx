@@ -48,7 +48,7 @@ const Header = () => {
 
         {/* ─── Logo ─── */}
         <Link href="/" className="flex items-center group shrink-0">
-          <div className="relative w-24 h-10 sm:w-28 sm:h-12 md:w-32 md:h-14 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-24 h-10 sm:w-28 sm:h-12 md:w-40 md:h-22 transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/assets/weee.png"
               alt="Electrician Logo"
@@ -58,6 +58,7 @@ const Header = () => {
             />
           </div>
         </Link>
+        
 
         {/* ─── Desktop Navigation ─── */}
         <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center">
